@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1xmj7pprckwc"]
+
+[ext_resource type="Script" path="res://scripts/ui/MainMenu.gd" id="1_f0sve"]
+[ext_resource type="Script" path="res://scripts/ui/ProjectVersion.gd" id="1_x4rba"]
+[ext_resource type="PackedScene" uid="uid://bbr1w4fimrw1i" path="res://scenes/ui/SettingsMenu.tscn" id="4_81mbv"]
+
+[node name="MainMenu" type="MarginContainer"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+scale = Vector2(1.00289, 1)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+script = ExtResource("1_f0sve")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 126
+text = "Vekhara Prototype"
+
+[node name="MenuOptions" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Play" type="Button" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 48
+text = "Play"
+
+[node name="Settings" type="Button" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 48
+text = "Settings"
+
+[node name="Quit" type="Button" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 48
+text = "Quit"
+
+[node name="Version" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Version polla"
+script = ExtResource("1_x4rba")
+
+[node name="Studio" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Very Serious Games"
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SettingsMenu" parent="." instance=ExtResource("4_81mbv")]
+visible = false
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MenuOptions/Play" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MenuOptions/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MenuOptions/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MenuOptions/Quit" to="." method="_on_quit_pressed"]
